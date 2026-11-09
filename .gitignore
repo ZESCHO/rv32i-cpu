@@ -1,0 +1,7 @@
+build/
+*.log
+*.jou
+*.pb
+*.wdb
+xsim.dir/
+.Xil/
