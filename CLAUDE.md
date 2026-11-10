@@ -30,6 +30,7 @@ Every Friday he explains the week's module on a whiteboard without notes. If he 
 
     tools/sim.sh NAME
 
-Compiles `rtl/NAME.sv` and `sim/tb_NAME.sv` with Vivado (on Windows, through `cmd.exe`) and runs the testbench.
+Compiles every `rtl/*.sv` plus `sim/tb_NAME.sv` with Vivado (on Windows, through `cmd.exe`) and runs the testbench.
+All of `rtl/` is compiled so one module can use another; if any `rtl/` file fails to compile, every sim fails.
 The testbench module is called `tb_NAME`, reports each mismatch with `$error("...")`, and ends with `$finish`.
 PASS means it compiled, reached `$finish` within 1 ms of simulated time, and no `$error`/`$fatal` fired.

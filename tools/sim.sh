@@ -1,9 +1,13 @@
 #!/bin/bash
 # tools/sim.sh NAME
 #
-# Compiles rtl/NAME.sv (and sim/tb_NAME.sv, if it exists) with Vivado's simulator,
+# Compiles every rtl/*.sv file (and sim/tb_NAME.sv, if it exists) with Vivado's simulator,
 # runs the testbench, and prints PASS or FAIL. Vivado lives on Windows, so each
 # tool runs through cmd.exe; the code stays here in WSL.
+#
+# All of rtl/ is compiled, not only rtl/NAME.sv, so a module can use another one
+# (e.g. adder.sv using full_adder.sv). The catch: if any file in rtl/ doesn't
+# compile, every simulation fails until it does.
 #
 # Testbench rules:
 #   - the testbench module is called tb_NAME
@@ -38,8 +42,9 @@ viv() {
 # Vivado prints paths like Z:/home/zescho/.../rtl/adder.sv; shorten them to rtl/adder.sv.
 short() { sed -E 's#[A-Z]:/[^ ]*/((rtl|sim)/[^] :]+)#\1#g'; }
 
-# 1. Compile (syntax and types).
-files="../../$rtl"
+# 1. Compile (syntax and types): all of rtl/, then the testbench.
+files=""
+for f in "$root"/rtl/*.sv; do files="$files ../../rtl/$(basename "$f")"; done
 [ -f "$root/$tb" ] && files="$files ../../$tb"
 if ! viv xvlog --sv $files; then
     grep -E '^(ERROR|WARNING)' "$build/xvlog.txt" | short
