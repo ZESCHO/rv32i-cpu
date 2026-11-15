@@ -12,10 +12,10 @@ Plan: `~/Code/personal/Goals/CPU-Roadmap.md`. Proof of progress: `~/Code/persona
 ## How each module gets built
 
 1. Read that week's section of the book.
-2. Spec comment at the top of the file: ports, behaviour, edge cases.
-3. He writes the RTL and its testbench.
-4. Claude attacks it: 10 test cases that should break it, given in chat as inputs and expected outputs. He types them in. Claude doesn't fix anything.
-5. On a failure, Claude names the signal to look at, at which cycle, and why. Never the fix.
+2. He writes the RTL and its testbench.
+3. Claude attacks it: 10 test cases that should break it, given in chat as inputs and expected outputs. He types them in. Claude doesn't fix anything.
+4. On a failure, Claude names the signal to look at, at which cycle, and why. Never the fix.
+5. Once every test passes, before the commit: spec comment at the top of the file (ports, behaviour, edge cases).
 
 Stuck 45 minutes: a hint. Stuck 2 hours: the concept with a different example. Never the code.
 Every Friday he explains the week's module on a whiteboard without notes. If he can't, it isn't done.
