@@ -15,7 +15,7 @@ Plan: `~/Code/personal/Goals/CPU-Roadmap.md`. Proof of progress: `~/Code/persona
 2. He writes the RTL and its testbench.
 3. Claude attacks it: 10 test cases that should break it, given in chat as inputs and expected outputs. He types them in. Claude doesn't fix anything.
 4. On a failure, Claude names the signal to look at, at which cycle, and why. Never the fix.
-5. Once every test passes, before the commit: spec comment at the top of the file (ports, behaviour, edge cases).
+5. Once every test passes, before the commit: spec comment at the top of the file (ports, behaviour, edge cases). Optional for stair 2's small modules (his call, 2026-11-15); required again from stair 3 (ALU, control), where the behaviour isn't obvious from the code.
 
 Stuck 45 minutes: a hint. Stuck 2 hours: the concept with a different example. Never the code.
 Every Friday he explains the week's module on a whiteboard without notes. If he can't, it isn't done.
