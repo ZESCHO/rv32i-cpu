@@ -24,6 +24,7 @@ Every Friday he explains the week's module on a whiteboard without notes. If he 
 
 - No testbench, no done.
 - Re-run every old test after every change.
+- A testbench counts only after it has caught a bug: plant one in the design once when the testbench is new or its checks change, see FAIL, restore. Not needed when only the design changes.
 - A stair is climbed only from proof: a commit, a passing test, or a whiteboard explanation.
 
 ## Running a simulation
