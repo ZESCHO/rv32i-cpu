@@ -25,6 +25,7 @@ Every Friday he explains the week's module on a whiteboard without notes. If he 
 - No testbench, no done.
 - Re-run every old test after every change.
 - A testbench counts only after it has caught a bug: plant one in the design once when the testbench is new or its checks change, see FAIL, restore. Not needed when only the design changes.
+- The planted bug must be the sneakiest wrong design that still compiles, not an easy one. Before writing the tests, ask "what wrong version would still pass?" and plant that. Examples: a flip-flop with no memory (`assign q = d`), an enable flip-flop that ignores enable, a counter that wraps one step early. Catching `q <= ~d` proves little: on 2026-11-17, `tb_dff` caught that but also passed `assign q = d`.
 - A stair is climbed only from proof: a commit, a passing test, or a whiteboard explanation.
 
 ## Running a simulation
