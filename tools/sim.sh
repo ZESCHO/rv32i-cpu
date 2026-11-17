@@ -42,16 +42,23 @@ viv() {
 # Vivado prints paths like Z:/home/zescho/.../rtl/adder.sv; shorten them to rtl/adder.sv.
 short() { sed -E 's#[A-Z]:/[^ ]*/((rtl|sim)/[^] :]+)#\1#g'; }
 
+# toollog TOOL: everything TOOL reported. Read Vivado's own log (build/NAME/TOOL.log), not the
+# captured screen output: when a compile fails, TOOL.txt can stop after its first line and
+# lose the ERROR lines (seen 2026-11-17 on a syntax error in rtl/dff.sv).
+toollog() {
+    if [ -f "$build/$1.log" ]; then tr -d '\r' < "$build/$1.log"; else cat "$build/$1.txt"; fi
+}
+
 # 1. Compile (syntax and types): all of rtl/, then the testbench.
 files=""
 for f in "$root"/rtl/*.sv; do files="$files ../../rtl/$(basename "$f")"; done
 [ -f "$root/$tb" ] && files="$files ../../$tb"
 if ! viv xvlog --sv $files; then
-    grep -E '^(ERROR|WARNING)' "$build/xvlog.txt" | short
+    toollog xvlog | grep -E '^(ERROR|WARNING)' | short
     echo "COMPILE FAILED"
     exit 1
 fi
-grep -E '^WARNING' "$build/xvlog.txt" | short
+toollog xvlog | grep -E '^WARNING' | short
 
 if [ ! -f "$root/$tb" ]; then
     echo "compiled OK ($rtl). No testbench yet: $tb"
@@ -60,7 +67,7 @@ fi
 
 # 2. Elaborate: connect the modules, starting from tb_NAME.
 if ! viv xelab "tb_$name" -s snap; then
-    grep -E '^(ERROR|WARNING)' "$build/xelab.txt" | short
+    toollog xelab | grep -E '^(ERROR|WARNING)' | short
     echo "ELABORATE FAILED (is the testbench module called tb_$name?)"
     exit 1
 fi
