@@ -1,3 +1,4 @@
+`default_nettype none
 module tb_four_one_mux;
     logic s0, s1, d0, d1, d2, d3, y, expected;
 

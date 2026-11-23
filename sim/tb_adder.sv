@@ -1,3 +1,4 @@
+`default_nettype none
 module tb_adder;
 
     logic [3:0] a, b, sum;

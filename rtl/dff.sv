@@ -1,6 +1,7 @@
+`default_nettype none
 module dff(
-    input logic clk,
-    input logic d,
+    input wire logic clk,
+    input wire logic d,
     output logic q
 ); 
     always_ff @( posedge clk ) 

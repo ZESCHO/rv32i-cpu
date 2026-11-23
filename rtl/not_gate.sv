@@ -1,7 +1,8 @@
+`default_nettype none
 // y = NOT a
 
 module not_gate (       
-    input  logic a,      
+    input wire logic a,      
     output logic y       
 );                       
     assign y = ~a;       

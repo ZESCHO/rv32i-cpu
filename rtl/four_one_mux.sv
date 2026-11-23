@@ -1,3 +1,4 @@
+`default_nettype none
 // mux: (NOT s1 AND NOT s0 AND d0) OR (NOT s1 AND s0 AND d1) OR (s1 AND NOT s0 AND d2) OR (s1 AND s0 AND d3)
 
 // ports: 
@@ -15,12 +16,12 @@
 // 1,0 = d2
 
 module four_one_mux(
-    input logic s0,
-    input logic s1, 
-    input logic d0, 
-    input logic d1, 
-    input logic d2, 
-    input logic d3, 
+    input wire logic s0,
+    input wire logic s1, 
+    input wire logic d0, 
+    input wire logic d1, 
+    input wire logic d2, 
+    input wire logic d3, 
     output logic y 
 );
     assign y = (~s1 & ~s0 & d0) | (~s1 & s0 & d1) | (s1 & ~s0 & d2) | (s1 & s0 & d3);

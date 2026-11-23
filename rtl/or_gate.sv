@@ -1,8 +1,9 @@
+`default_nettype none
 // y = a OR b
 
 module or_gate(
-    input logic a,
-    input logic b,
+    input wire logic a,
+    input wire logic b,
     output logic y
 );
 

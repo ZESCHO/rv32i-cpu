@@ -1,3 +1,4 @@
+`default_nettype none
 module tb_full_adder;
     logic a, b, cin, s, cout;
 

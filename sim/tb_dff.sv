@@ -1,3 +1,4 @@
+`default_nettype none
 module tb_dff;
     logic clk = 0;
     logic d, q;

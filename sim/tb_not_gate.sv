@@ -1,3 +1,4 @@
+`default_nettype none
 module tb_not_gate;            
     logic a, y;                   
 

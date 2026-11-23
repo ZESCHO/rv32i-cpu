@@ -1,8 +1,9 @@
+`default_nettype none
 // y = a AND b
 
 module and_gate(
-    input logic a,
-    input logic b,
+    input wire logic a,
+    input wire logic b,
     output logic y
 );
 

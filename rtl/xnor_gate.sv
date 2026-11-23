@@ -1,8 +1,9 @@
+`default_nettype none
 //y = a xnor b
 
 module xnor_gate (
-    input logic a,
-    input logic b,
+    input wire logic a,
+    input wire logic b,
     output logic y
 );
     assign y = ~(a ^ b);

@@ -1,8 +1,9 @@
+`default_nettype none
 module three_to_eight_decoder(
 
-    input logic a,
-    input logic b,
-    input logic c,
+    input wire logic a,
+    input wire logic b,
+    input wire logic c,
     output logic y7,
     output logic y6,
     output logic y5,

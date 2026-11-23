@@ -1,7 +1,8 @@
+`default_nettype none
 module adder(
-    input logic [3:0] a,
-    input logic [3:0] b,
-    input logic cin,
+    input wire logic [3:0] a,
+    input wire logic [3:0] b,
+    input wire logic cin,
     output logic [3:0] sum,
     output logic cout
 );
