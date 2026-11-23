@@ -11,6 +11,8 @@ module tb_dff;
         #1;
         if(q !== 1) $error("d=%b, q=%b, Expected 1", d, q);
         d = 0;
+        #2;
+        if(q !== 1) $error("d=%b, q=%b, Expected 1", d, q);
         @(posedge clk);
         #1;
         if(q !== 0) $error("d=%b, q=%b, Expected 0", d, q);
