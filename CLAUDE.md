@@ -36,3 +36,12 @@ Compiles every `rtl/*.sv` plus `sim/tb_NAME.sv` with Vivado (on Windows, through
 All of `rtl/` is compiled so one module can use another; if any `rtl/` file fails to compile, every sim fails.
 The testbench module is called `tb_NAME`, reports each mismatch with `$error("...")`, and ends with `$finish`.
 PASS means it compiled, reached `$finish` within 1 ms of simulated time, and no `$error`/`$fatal` fired.
+
+## Drawing a module
+
+    tools/schem.sh NAME
+
+Reads every `rtl/*.sv`, lets Yosys turn module NAME into a circuit, and draws it with netlistsvg into `build/schem/NAME.png` (and `.svg`). Takes about a second.
+In a mux, the top input is chosen when the select is 0, the bottom one when it's 1.
+A drawing shows how the code was read, not that it works: the testbench still decides that.
+Vivado can draw the same module (`synth_design -rtl`, then `write_schematic`), but only in GUI mode and in about 50 s.
