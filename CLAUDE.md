@@ -45,3 +45,12 @@ Reads every `rtl/*.sv`, lets Yosys turn module NAME into a circuit, and draws it
 In a mux, the top input is chosen when the select is 0, the bottom one when it's 1.
 A drawing shows how the code was read, not that it works: the testbench still decides that.
 Vivado can draw the same module (`synth_design -rtl`, then `write_schematic`), but only in GUI mode and in about 50 s.
+
+## Drawing a testbench run (timing)
+
+    tools/wave.sh NAME
+    WAVE_HIDE=q tools/wave.sh NAME     # q drawn as a blank "?" row, for a timing quiz
+
+Runs `sim/tb_NAME.sv` like `sim.sh` (PASS/FAIL too), records every testbench signal, and draws the timing diagram into `build/wave/NAME.png` (and `.svg`). About 15 s.
+Dashed blue lines are rising clock edges, numbered; a red box is x; a red line marks a moment a `$error` fired.
+Teach timing from this picture of his own run, not from tables or prose (2026-11-27: tables failed, the picture worked).
